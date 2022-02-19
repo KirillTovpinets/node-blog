@@ -1,0 +1,35 @@
+html 
+  head 
+    title My project 
+    link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
+    link(rel="stylesheet" href="/css/styles.css")
+  body 
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light 
+      .container 
+        a(class='navbar-brand' href='/') Navbar
+        button(class='navbar-toggler', type="button", data-toggler='collapse', data-target='#app-navbar', area-controls='app-navbar' aria-expanded='false' aria-lable='Toggle navigation')
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#app-navbar
+          if user 
+            ul.navbar-nav
+              li.nav-item
+                a.nav-link(href='/') Home
+              li.nav-item
+                a.nav-link(href='/articles/add') Add Article
+          ul.navbar-nav.me-2
+            if user 
+              li.nav-item 
+                a.nav-link(href='/user/logout') Logout
+            else
+              li.nav-item 
+                a.nav-link(href='/user/register') Register 
+              li.nav-item 
+                a.nav-link(href='/user/login') Login
+    .container
+      != messages('message', locals)
+      block content 
+      br
+      hr
+      footer 
+          p Copyright
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
